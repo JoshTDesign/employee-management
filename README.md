@@ -20,8 +20,17 @@ This is a command line tool for tracking a companies workforce. The interface pr
 
 This program can keep track of employees, roles, departments. Each of these objects also have associated attributes such as salary, management structure, and more. Employees and roles can be created and deleted. Roles can be changed and more.
 
+### Screencaps
+
+![Screencap1](https://user-images.githubusercontent.com/78992027/116192617-f6e5b100-a6e2-11eb-8dab-5a0fcbe7c28e.PNG)
+![Screencap2](https://user-images.githubusercontent.com/78992027/116192627-f8af7480-a6e2-11eb-858b-c0588be970e4.PNG)
+
+
+### Walkthrough
+![Walkthrough](https://drive.google.com/file/d/1nRgLA7v4XV7RQywdX04JxZ7qAjCqRQNV/view)
+
 ### Challenges encountered  
-This project really was a great introduction into using mySql databases to track and store information. Create reports by joining tables and more. Getting javascript to interact with mySql through Express was difficult at first, but I certainly learned a lot.
+This project really was a great introduction into using mySql databases to track and store information. Create reports by joining tables and filtering. Getting javascript to interact with mySql through Express was difficult at first, but I certainly learned a lot.
 
 
 ### Where credit is due  
