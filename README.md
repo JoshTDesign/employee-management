@@ -27,7 +27,7 @@ This program can keep track of employees, roles, departments. Each of these obje
 
 
 ### Walkthrough
-(https://drive.google.com/file/d/1nRgLA7v4XV7RQywdX04JxZ7qAjCqRQNV/view)
+https://drive.google.com/file/d/1nRgLA7v4XV7RQywdX04JxZ7qAjCqRQNV/view
 
 ### Challenges encountered  
 This project really was a great introduction into using mySql databases to track and store information. Create reports by joining tables and filtering. Getting javascript to interact with mySql through Express was difficult at first, but I certainly learned a lot.
