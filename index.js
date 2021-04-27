@@ -26,7 +26,7 @@ const init = () => {
         .prompt ([
             {
                 name: "choice",
-                choices: ["View all employees", "View all employees by department", "View all employees by manager", "Add employee", "Remove employee", "Update employee role", "Update employee manager", "View all roles"],
+                choices: ["View all employees", "View all employees by department", "View all employees by manager", "Add employee", "Add role", "Remove employee", "Update employee role", "Update employee manager", "View all roles", "Exit"],
                 message: "What would you like to do?",
                 type: "list"
             }
@@ -45,6 +45,9 @@ const init = () => {
                 case "Add employee":
                     addEmployee();
                     break;
+                case "Add role":
+                    addRole();
+                    break;
                 case "Remove employee":
                     removeEmployee();
                     break;
@@ -56,6 +59,10 @@ const init = () => {
                     break;
                 case "View all roles":
                     viewRoles();
+                    break;
+                case "Quit":
+                    console.log("Goodbye")
+                    connection.end();
                     break;
                 default:
                     console.log("see ya!")
@@ -299,6 +306,70 @@ const addEmployee = () => {
             })
     })
     })
+};
+
+const addRole = () => {
+    connection.query('SELECT * FROM role', (err, results) => {
+        if (err) throw err;
+    connection.query('SELECT * FROM department', (departmentErr, departmentResults) => {
+        if (departmentErr) throw err;
+
+        inquirer
+            .prompt([
+                {
+                    name: 'roleName',
+                    type: 'input',
+                    message: 'Enter the name of this role'
+                },
+                {
+                    name: 'roleSalary',
+                    type: 'input',
+                    message: 'Enter the salary for this role'
+                },
+                {
+                    name: 'roleDepartment',
+                    type: 'rawlist',
+                    choices() {
+                        const choiceArray = departmentResults.map(emp =>({name: `${emp.name}`, value:emp.id}));
+                        return choiceArray;
+                    },
+                    message: 'Choose a department'
+                }
+            ])
+            .then((answer) => {
+                let chosenItem;
+                //assign variables based on answers
+                const thisId = Math.floor(Math.random() * 1000);
+                const thisName = answer.roleName;
+                const thisSalary = answer.roleSalary;
+                // match 'role' answer to role in order to assign correct role_id
+                chosenItem = answer.roleDepartment;
+                connection.query(
+                    `INSERT INTO role SET ?`, 
+                    {
+                        id: thisId,
+                        title: thisName, 
+                        salary: thisSalary, 
+                        department_id: answer.roleDepartment
+                    },
+                    (err) => {
+                        if (err) throw err;
+                
+                    console.log(`
+
+------------------------------------------------
+*  A new role has been created!                *
+------------------------------------------------
+
+                              `);
+                              init();
+                            } 
+                        )
+                    
+
+                });
+            })
+        })
 };
 
 const viewAll = () => {
